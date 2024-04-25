@@ -29,4 +29,11 @@ public class W {
         driver.manage().window().maximize();
     }
 
+    public static void close() {
+        if (instance != null) {
+            instance.driver.close();
+            instance = null;
+        }
+    }
+
 }
