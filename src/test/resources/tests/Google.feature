@@ -8,7 +8,7 @@ Feature: Google
     When About page is shown
     Then page displays "Our mission is to organise the world’s information and make it universally accessible and useful"
 
-  @regression @develop
+  @regression
   Scenario: Search for BBC News
     When searching for "BBC News"
     Then results contain "Home - BBC News"
