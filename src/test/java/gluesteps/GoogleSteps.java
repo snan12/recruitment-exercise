@@ -9,6 +9,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import com.example.utils.W;
+
 import GooglePage.GooglePage;
 
 
@@ -17,7 +19,7 @@ public class GoogleSteps {
 	
 	public GoogleSteps() {
 	System.setProperty("webdriver.chrome.driver","D:\\Automation-Exercise\\chromedriver.exe");
-	webdriver=new ChromeDriver();
+	this.webdriver= W.getDriver();
 	}
 	
     @Given("url {string} is launched")

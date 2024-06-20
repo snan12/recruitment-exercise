@@ -1,26 +1,26 @@
 package account;
 
+import static org.junit.Assert.assertTrue;
+
 import java.util.List;
 import java.util.Map;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
+import org.junit.Assert;
 import io.cucumber.datatable.DataTable;
-
 public class Account {
 	WebDriver webdriver;
 	DataTable dt;
 	String accNumber;
 	String accName;
 	String accDetails;
-	String accountNumber="//input[]";
-	String accountName="//input[]";
-	String submit="//input[]";
+	String accountNumber="//input[@id='accountNumber']";
+	String accountName="//input[@id='accountName']";
+	String submit="//input[@id='submit']";
 	String accountExists="div[@id='accountExsits']";
-	String transcationRows="//input[]";
-	String downloadStatement="//input[]";
+	String transcationRows="//tr[@class='transaction']";
+	String downloadStatement="//input[@id='downloadStatement']";
 	Map<String,String> actualTable =null;
 	String transcation="";
 	
@@ -80,13 +80,13 @@ public void run() throws Exception{
 
 public void verifyAccount(String accNumber, String accName) {
 	
-	webdriver.get("url");//it's a dummy url
+	webdriver.get("file:///C:/Users/Deepa/OneDrive/Desktop/AccountPage.html");//it's a dummy url
 	System.out.println("print" + accNumber);
 	System.out.println("print" + accName);
 	webdriver.findElement(By.xpath(accNumber)). sendKeys(accNumber);
 	webdriver.findElement(By.xpath(accName)). sendKeys(accName);
 	webdriver.findElement(By.xpath(submit)). click();
-	Assert.assertTrue("Account is not found!",webdriver.findElement(By.xpath(accountExists)).isDisplayed());
+	assertTrue("Account is not found!",webdriver.findElement(By.xpath(accountExists)).isDisplayed());
 	
 }
 

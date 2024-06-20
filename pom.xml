@@ -33,24 +33,39 @@
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 			<version>4.19.1</version>
+			
 		</dependency>
 
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-java</artifactId>
-			<version>4.1.0</version>
+			<version>7.0.0</version>
+			<scope>test</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-junit</artifactId>
-			<version>4.1.0</version>
+			<version>7.0.0</version>
+			<scope>test</scope>
 		</dependency>
-
-		<dependency>
+		
+		<!-- <dependency>
 			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-java</artifactId>
-			<version>4.8.1</version>
-		</dependency>
+			<artifactId>cucumber-datatable</artifactId>
+			<version>7.0.0</version>
+			<scope>test</scope>
+		</dependency>-->
+
+
+<!-- https://mvnrepository.com/artifact/io.cucumber/datatable -->
+<dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>datatable</artifactId>
+    <version>7.18.0</version>
+</dependency>
+
+		
 		<!--
 		https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver -->
 		<dependency>
@@ -79,8 +94,8 @@
 					<version>2.16</version>
 					<configuration>
 						<includes>
-							<!--<exclude>**/*Runner.java</exclude>
-							<exclude>**/*Test.java</exclude>-->
+							<exclude>**/*Runner.java</exclude>
+							<exclude>**/*Test.java</exclude>
 						</includes>
 					</configuration>
 				</plugin>

@@ -1,15 +1,13 @@
 package gluesteps;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import account.Account;
+import com.example.utils.W;
+
 import account.Account;
 import io.cucumber.datatable.DataTable;
+import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -22,7 +20,7 @@ public class AccountSteps {
 	public AccountSteps() {
 	  String filePath = "D:\\TestProject\\Automation-Exercise\\src\\test\\resources\\tests\\Bank-Statement-Template-1-TemplateLab.pdf";
 	  System.setProperty("webdriver.chrome.driver","D:\\Automation-Exercise\\chromedriver.exe");
-	  this.webdriver=new ChromeDriver();
+	  this.webdriver= W.getDriver();
 	  
 	}
 
@@ -42,7 +40,7 @@ public class AccountSteps {
     
     public void VerifydepositsAreMade(DataTable dt) {
         try {
-        	new Account(webdriver,dt,"withdrawls").run();
+        	new Account(webdriver,dt,"deposits").run();
         } catch(Exception e) {
     		e.printStackTrace();
     	}
@@ -74,9 +72,23 @@ public class AccountSteps {
      } catch(Exception e) {
  		e.printStackTrace();
  	}
+     
+     }
+ 
+ @Then("^statement includes \"([^\"]*)\"$")
+ public void statementIncludes(String text) {
+     try {
+         new Account(webdriver, "verifyStatement", text).run();
+     } catch (Exception e) {
+         e.printStackTrace();
+     }
  }
+
+ @After
+ public void tearDown() {
+     W.close();
 }
-	
+}
         
         
         

@@ -1,13 +1,12 @@
 package GooglePage;
 
-import java.util.Map;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import dev.failsafe.internal.util.Assert;
 
 public class GooglePage {
 	WebDriver webdriver = null;
@@ -43,13 +42,13 @@ public class GooglePage {
 			//Screenshot.take(webdriver,new File(""),"firstpage.png");
 			break;
 		case "check page":
-			Assert.assertTrue(webdriver.findElement(By.xpath(about)).isDisplayed());
+			assertTrue(webdriver.findElement(By.xpath(about)).isDisplayed());
 			//Screenshot.take(webdriver,new File(""),"aboutpage.png");
 			break;
 		case "check message":
 			String missionstat = webdriver.findElement(By.xpath(mission)).getText();
 			System.out.println("print stat" +missionstat);
-			Assert.assertEquals(param+"not displayed",param,missionstat);
+			assertEquals(param+"not displayed",param,missionstat);
 			//Screenshot.take(webdriver,new File("")),"missionpage.png");
 			break;
 		case "search word":
