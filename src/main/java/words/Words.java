@@ -36,27 +36,5 @@ public class Words {
 
 			return list;
 		}
-
-
-	 public int add(int a, int b) {
-			int inputone;
-			int inputtwo;
-			//int sum=0;
-
-			try {
-				inputone = a;
-				inputtwo = b;
-				sum = inputone + inputtwo;
-
-			} catch (Exception e) {
-				e.printStackTrace();
-
-			}
-			 
-		  return sum;
-		}
-
-
-
 	
 }

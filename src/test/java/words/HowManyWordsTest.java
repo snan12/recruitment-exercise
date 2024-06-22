@@ -13,7 +13,7 @@ public class HowManyWordsTest {
 		List<String> uniqueWords = Words.getUniqueWordsFromSentence("A cat Sat on a mat; a Monkey sat on the Cat.");
 		List<String> expectedResult = List.of("a", "cat", "sat", "on", "the", "mat", "monkey");
 
-		Assert.assertEquals(expectedResult.size(), uniqueWords.size());
+		Assert.assertEquals(7, uniqueWords.size());
 		for (String word : expectedResult) {
 			Assert.assertTrue(String.format("Word '%s' should be included", word), uniqueWords.contains(word));
 		}

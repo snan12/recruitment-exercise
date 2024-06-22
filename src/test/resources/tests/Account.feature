@@ -1,12 +1,16 @@
+
+
 Feature: Account statement
 
   Background:
     Given Account exists for Acc No. "12345678" with Name "Bob Smith"
-    And deposits are made
+    Given deposits are made
       | INIT | 200 |
       | DEP1 | 100 |
       | DEP2 | 450 |
       | DEP3 | 50  |
+   @regression  
+   Scenario:Verifying Accountone
     And withdrawls are made
       | CHQ001 | 675.55 |
     When statement is produced

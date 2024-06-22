@@ -1,5 +1,6 @@
 package gluesteps;
 
+import org.junit.AfterClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -13,92 +14,65 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class AccountSteps {
-	
+public class AccountSteps extends W {
+
 	WebDriver webdriver;
-	
+
 	public AccountSteps() {
-	  String filePath = "D:\\TestProject\\Automation-Exercise\\src\\test\\resources\\tests\\Bank-Statement-Template-1-TemplateLab.pdf";
-	  System.setProperty("webdriver.chrome.driver","D:\\Automation-Exercise\\chromedriver.exe");
-	  this.webdriver= W.getDriver();
-	  
+		this.webdriver = getWebDriver();
+
 	}
 
-    @Given("^Account exists for Acc No\\. \"([^\"]*)\" with Name \"([^\"]*)\"$")
-    public void verifyAccountExists(String accNumber, String accName) {
-    	try {
-    		
-       new Account(webdriver,accNumber,accName,"searchAccount").run();
-    	} catch(Exception e) {
-    		e.printStackTrace();
-    	}
-    	
-    }
+	@Given("^Account exists for Acc No\\. \"([^\"]*)\" with Name \"([^\"]*)\"$")
+	public void verifyAccountExists(String accNumber, String accName) {
+		try {
 
-    
-    @And("deposits are made")
-    
-    public void VerifydepositsAreMade(DataTable dt) {
-        try {
-        	new Account(webdriver,dt,"deposits").run();
-        } catch(Exception e) {
-    		e.printStackTrace();
-    	}
-    }
+			new Account(webdriver, accNumber, accName, "searchAccount").run();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-    @And("withdrawls are made")
-    public void VerifywithdrawlsAreMade(DataTable dt) {
-    try {
-    	new Account(webdriver,dt,"withdrawls").run();
-    } catch(Exception e) {
-		e.printStackTrace();
 	}
-    }
-    
-    @When("statement is produced")
-    public void downloadStatement(DataTable dt) {
-        try {
-        	new Account(webdriver,dt,"downloadStatement").run();
-        } catch(Exception e) {
-    		e.printStackTrace();
-    	}
-        }
- 
 
- @Then("statement includes {string}")
- public void verifyStatement(String  param) {
-     try {
-     	new Account(webdriver,"verifyStatement",param).run();
-     } catch(Exception e) {
- 		e.printStackTrace();
- 	}
-     
-     }
- 
- @Then("^statement includes \"([^\"]*)\"$")
- public void statementIncludes(String text) {
-     try {
-         new Account(webdriver, "verifyStatement", text).run();
-     } catch (Exception e) {
-         e.printStackTrace();
-     }
- }
+	@Given("deposits are made")
+	public void VerifydepositsAreMade(DataTable dt) {
+		try {
+			new Account(webdriver, dt, "deposits").run();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
- @After
- public void tearDown() {
-     W.close();
+	@And("withdrawls are made")
+	public void VerifywithdrawlsAreMade(DataTable dt) {
+		try {
+			new Account(webdriver, dt, "withdrawls").run();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@When("statement is produced")
+	public void downloadStatement() {
+		try {
+			new Account(webdriver, "downloadStatement").run();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Then("statement includes {string}")
+	public void verifyStatement(String param) {
+		try {
+			new Account(webdriver, "verifyStatement", param).run();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	@After
+	public void teardownMethod() {
+		W.close();
+	}
 }
-}
-        
-        
-        
-    
-        
-    
-
-    
-    
-    
-
-    
- 
