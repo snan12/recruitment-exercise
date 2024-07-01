@@ -24,9 +24,7 @@ the tests.
 Executing 'mvn test' should succeed.
 mvn test -Dwebdriver.chrome.driver=path/to/chromedriver -Dcucumber.filter.tags="@regression"
 
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
-
-Exercises:
+Tests run: 6, Failures: 0, Errors: 0, Skipped:0
 
 (Java, Junit, Git, Maven)
 1. How Many Words: Implement the method to pass the unit test.
